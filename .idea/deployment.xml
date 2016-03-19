@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="RPi">
+  <component name="PublishConfigData" autoUpload="Always" serverName="RPi" uploadOnCheckin="6717e1bc-db75-4fb7-9c03-b5a8ae02dd11">
     <serverData>
       <paths name="RPi">
         <serverdata>
@@ -10,6 +10,7 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myUploadOnCheckinName" value="RPi" />
     <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
