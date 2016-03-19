@@ -1,10 +1,12 @@
 import os
 import shutil
+import threading
 
 
-class Copyjob:
+class Copyjob(threading.Thread):
 
     def __init__(self, src, dest):
+        threading.Thread.__init__(self)
         self.src = src
         self.dest = dest
         self.copied_bytes = 0
@@ -45,7 +47,7 @@ class Copyjob:
                 self.copied_bytes += os.path.getsize(src_file)
                 print("progress: {}".format(self.get_progress()))
 
-    # start the copy job
-    def start_job(self):
+    # this functions runs the job as thread
+    def run(self):
         self.__get_overall_filesize()
         self.__copy_files()
