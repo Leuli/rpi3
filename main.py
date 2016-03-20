@@ -2,7 +2,7 @@ from time import sleep
 from copyjob import Copyjob
 import shutil
 from dropbox_uploader import DbxUploadManager
-
+from settings_manager import SettingsMgnr
 
 
 # shutil.rmtree("/home/pi/sd_test/2")
@@ -23,5 +23,8 @@ from dropbox_uploader import DbxUploadManager
 # for i in range(0, 10):
 #     print("test")
 #     sleep(1)
+
+settings = SettingsMgnr()
+
 
 
