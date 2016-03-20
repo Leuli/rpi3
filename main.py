@@ -4,6 +4,13 @@ import shutil
 from dropbox_uploader import DbxUploadManager
 from settings_manager import SettingsMgnr
 
+# initialise settings object (read ini file)
+settings = SettingsMgnr()
+
+dbx = DbxUploadManager(settings)
+dbx.start()
+
+# weiter: session upload mit DbxUploadManager
 
 # shutil.rmtree("/home/pi/sd_test/2")
 # job1 = Copyjob("/home/pi/sd_test/1","/home/pi/sd_test/2")
@@ -24,7 +31,7 @@ from settings_manager import SettingsMgnr
 #     print("test")
 #     sleep(1)
 
-settings = SettingsMgnr()
+
 
 
 

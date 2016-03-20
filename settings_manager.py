@@ -1,6 +1,8 @@
 import configparser
 import os.path
 
+CONFIGPATH = "/home/pi/travelpi_cfg.ini"
+
 class SettingsMgnr:
 
     def __init__(self):
@@ -8,16 +10,12 @@ class SettingsMgnr:
         self.dbx_local_path = ""
         self.dbx_remote_path = ""
 
-
-        if os.path.isfile("/home/pi/travelpi_cfg.ini"):
-            #config = configparser.ConfigParser()
-            pass
+        if os.path.isfile(CONFIGPATH):
+            self.parse_cfg_file()
         else:
             self.new_settings()
 
-
     def new_settings(self):
-
         # read settings from cli
         self.dbx_auth_token = input("Enter dropbox auth token:")
         self.dbx_local_path = input("Enter your local TravelPi backup path:")
@@ -32,3 +30,11 @@ class SettingsMgnr:
         cfgparser.set('DropboxSettings', 'dbx_remote_path', self.dbx_remote_path)
         cfgparser.write(cfgfile)
         cfgfile.close()
+
+    def parse_cfg_file(self):
+        cfgparser = configparser.ConfigParser()
+        cfgparser.read(CONFIGPATH)
+        cfgparser.sections()
+        self.dbx_auth_token = cfgparser.get("DropboxSettings", "dbx_auth_token")
+        self.dbx_local_path = cfgparser.get("DropboxSettings", "dbx_local_path")
+        self.dbx_remote_path = cfgparser.get("DropboxSettings", "dbx_remote_path")

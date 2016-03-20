@@ -7,14 +7,14 @@ from dropbox.exceptions import ApiError, AuthError
 
 class DbxUploadManager(threading.Thread):
 
-    def __init__(self, auth_token):
+    def __init__(self, settings):
         threading.Thread.__init__(self)
         self.dbx = 0
-        self.auth_token = auth_token
+        self.settings = settings
 
     def setup(self):
         # create dropbox object
-        self.dbx = dropbox.Dropbox(self.auth_token)
+        self.dbx = dropbox.Dropbox(self.settings.dbx_auth_token)
 
         # Check that the access token is valid
         try:
@@ -42,7 +42,7 @@ class DbxUploadManager(threading.Thread):
 
     def run(self):
         self.setup()
-        self.upload("/home/pi/sd_test/1/P1180922.JPG","/travelpi/P1180922.JPG")
+        self.upload("/home/pi/sd_test/1/P1180922.JPG", "/travelpi/P1180922.JPG")
 
 
 # import sys
