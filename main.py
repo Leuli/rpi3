@@ -1,9 +1,8 @@
 from time import sleep
 from copyjob import Copyjob
 import shutil
-import dropbox_uploader
+from dropbox_uploader import DbxUploadManager
 
-dropbox_uploader.tues()
 
 
 # shutil.rmtree("/home/pi/sd_test/2")
@@ -13,3 +12,16 @@ dropbox_uploader.tues()
 #     sleep(1)
 #     print("progress:{}   running:{}".format(job1.get_progress(), job1.is_alive()))
 #
+
+
+# with open("/home/pi/dbx_token.txt") as f:
+#     dbx_token = f.read()
+#
+# dbx = DbxUploadManager('')
+# dbx.start()
+#
+# for i in range(0, 10):
+#     print("test")
+#     sleep(1)
+
+

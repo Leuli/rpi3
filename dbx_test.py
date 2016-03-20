@@ -13,7 +13,7 @@ from dropbox.exceptions import ApiError, AuthError
 # See <https://blogs.dropbox.com/developers/2014/05/generate-an-access-token-for-your-own-account/>
 TOKEN = ''
 
-LOCALFILE = 'my-file.txt'
+LOCALFILE = '/home/pi/sd_test/1/P1180922.JPG'
 BACKUPPATH = '/my-file-backup.txt'
 
 # Uploads contents of LOCALFILE to Dropbox
@@ -67,13 +67,9 @@ def select_revision():
     # Return the oldest revision (first entry, because revisions was sorted oldest:newest)
     return revisions[0].rev
 
-if __name__ == '__main__':
-    # Check for an access token
-    if (len(TOKEN) == 0):
-        sys.exit("ERROR: Looks like you didn't add your access token. Open up backup-and-restore-example.py in a text editor and paste in your token in line 14.")
 
-    # Create an instance of a Dropbox class, which can make requests to the API.
-    print("Creating a Dropbox object...")
+if __name__ == '__main__':
+
     dbx = dropbox.Dropbox(TOKEN)
 
     # Check that the access token is valid
@@ -84,13 +80,3 @@ if __name__ == '__main__':
 
     # Create a backup of the current settings file
     backup()
-
-    # Change the user's file, create another backup
-    change_local_file("updated")
-    backup()
-
-    # Restore the local and Dropbox files to a certain revision
-    to_rev = select_revision()
-    restore(to_rev)
-
-    print("Done!")
